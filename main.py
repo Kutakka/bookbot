@@ -7,6 +7,8 @@ if len(sys.argv) != 2:
         sys.exit(1)
 
 filepath = sys.argv[1]
+word_count = get_book_text(filepath)
+letter_list = letter_sorter(letter_counter(filepath))
 
 if not os.path.isfile(filepath):
      print(f"Error: The file '{filepath}' does not exist or is not accessable")
@@ -17,11 +19,9 @@ if not os.path.isfile(filepath):
 def main():
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {filepath}...")
-    word_count = get_book_text(sys.argv[1])
     print("----------- Word Count ----------")
     print(f"Found {word_count} total words")
     print("--------- Character Count -------")
-    letter_list = letter_sorter(letter_counter(sys.argv[1]))
     for item in letter_list:
         char = item["letter"]
         count = item["count"]
